@@ -534,7 +534,7 @@ QAbstractSpinBox {
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="frameFilter">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -558,7 +558,7 @@ border-radius: 5px;</string>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QWidget" name="widget" native="true">
+      <widget class="QWidget" name="widgetFilterLanguage" native="true">
        <property name="styleSheet">
         <string notr="true">border-style: solid;
 border-width: 3px;
@@ -568,7 +568,7 @@ background-color: #ffe5d8;</string>
         <item row="0" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_22">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="labelFilterLanguage">
             <property name="styleSheet">
              <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -593,7 +593,7 @@ border-color: #4d4018;</string>
            </spacer>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton">
+           <widget class="QRadioButton" name="radioButtonFilterLanguageTurkish">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -634,7 +634,7 @@ QRadioButton:hover{
            </spacer>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_2">
+           <widget class="QRadioButton" name="radioButtonFilterLanguageEnglish">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -667,7 +667,7 @@ QRadioButton:hover{
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="widget_3" native="true">
+      <widget class="QWidget" name="widgetFilterGender" native="true">
        <property name="styleSheet">
         <string notr="true">border-style: solid;
 border-width: 3px;
@@ -675,7 +675,7 @@ background-color: #ffe5d8;</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="labelFilterGender">
           <property name="styleSheet">
            <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -700,7 +700,7 @@ border-color: #4d4018;</string>
          </spacer>
         </item>
         <item row="0" column="2">
-         <widget class="QRadioButton" name="radioButton_3">
+         <widget class="QRadioButton" name="radioButtonFilterGenderMale">
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -741,7 +741,7 @@ QRadioButton:hover{
          </spacer>
         </item>
         <item row="0" column="4">
-         <widget class="QRadioButton" name="radioButton_4">
+         <widget class="QRadioButton" name="radioButtonFilterGenderFemale">
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -772,7 +772,7 @@ QRadioButton:hover{
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="widget_2" native="true">
+      <widget class="QWidget" name="widgetFilterName" native="true">
        <property name="styleSheet">
         <string notr="true">border-style: solid;
 border-width: 3px;
@@ -782,7 +782,7 @@ background-color: #ffe5d8;</string>
         <item row="0" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_21">
           <item>
-           <widget class="QLabel" name="label_18">
+           <widget class="QLabel" name="labelFilterName">
             <property name="styleSheet">
              <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -796,7 +796,7 @@ border-color: #4d4018;</string>
          </layout>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="comboBox">
+         <widget class="QComboBox" name="comboBoxFilterName">
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -873,7 +873,7 @@ QComboBox:hover{
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="widget_4" native="true">
+      <widget class="QWidget" name="widgetFilterCommend" native="true">
        <property name="styleSheet">
         <string notr="true">border-style: solid;
 border-width: 3px;
@@ -883,7 +883,7 @@ background-color: #ffe5d8;</string>
         <item row="0" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_27">
           <item>
-           <widget class="QLabel" name="label_19">
+           <widget class="QLabel" name="labelFilterCommend">
             <property name="styleSheet">
              <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -897,7 +897,7 @@ border-color: #4d4018;</string>
          </layout>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="comboBox_2">
+         <widget class="QComboBox" name="comboBoxFilterCommend">
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -940,7 +940,7 @@ QComboBox:hover{
      </item>
     </layout>
    </widget>
-   <widget class="QFrame" name="frame_2">
+   <widget class="QFrame" name="frameList">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -964,7 +964,7 @@ border-radius: 5px;</string>
     </property>
     <layout class="QGridLayout" name="gridLayout_7">
      <item row="1" column="0">
-      <widget class="QScrollArea" name="scrollArea_2">
+      <widget class="QScrollArea" name="scrollAreaList">
        <property name="styleSheet">
         <string notr="true">border-style: solid;
 border-width: 2px;
@@ -984,7 +984,7 @@ background-color: #ffe5d8;</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QWidget" name="widget_6" native="true">
+          <widget class="QWidget" name="widgetCardExample" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -1006,7 +1006,7 @@ background-color: #ffe5d8;</string>
             <item row="0" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_15">
               <item>
-               <widget class="QPushButton" name="pushButton_12">
+               <widget class="QPushButton" name="pushButtonCardExamplePlay">
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
@@ -1031,7 +1031,7 @@ QPushButton:hover {
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_16">
                 <item>
-                 <widget class="QLabel" name="label_36">
+                 <widget class="QLabel" name="labelCardExampleLanguage">
                   <property name="styleSheet">
                    <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -1044,7 +1044,7 @@ border-color: #4d4018;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_37">
+                 <widget class="QLabel" name="labelCardExampleGender">
                   <property name="styleSheet">
                    <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -1056,7 +1056,7 @@ border-color: #4d4018;</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_38">
+                 <widget class="QLabel" name="labelCardExampleName">
                   <property name="styleSheet">
                    <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -1068,7 +1068,7 @@ border-color: #4d4018;</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_39">
+                 <widget class="QLabel" name="labelCardExampleCommend">
                   <property name="styleSheet">
                    <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -1080,7 +1080,7 @@ border-color: #4d4018;</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QProgressBar" name="progressBar_8">
+                 <widget class="QProgressBar" name="progressBarCardExample">
                   <property name="styleSheet">
                    <string notr="true">background-color: black;
 border-color: #4d4018;</string>
@@ -1559,7 +1559,7 @@ border-color: #4d4018;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QFrame" name="frame_3">
+   <widget class="QFrame" name="frameButtons">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -1583,7 +1583,7 @@ border-radius: 5px;</string>
     </property>
     <layout class="QGridLayout" name="gridLayout_8">
      <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton_7">
+      <widget class="QPushButton" name="pushButtonButtonsFilterData">
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -1610,7 +1610,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QPushButton" name="pushButton_8">
+      <widget class="QPushButton" name="pushButtonButtonsShowAllData">
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -1637,7 +1637,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QPushButton" name="pushButton_9">
+      <widget class="QPushButton" name="pushButtonButtonsDownloadData">
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -1664,7 +1664,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item row="0" column="3">
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="pushButtonButtonsClearData">
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -1692,7 +1692,7 @@ QPushButton:pressed {
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="widget_5" native="true">
+   <widget class="QWidget" name="widgetShowedData" native="true">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -1722,7 +1722,7 @@ border-color: #556B2F;</string>
       </spacer>
      </item>
      <item row="0" column="3">
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="labelShowedDataNumber">
        <property name="styleSheet">
         <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -1736,7 +1736,7 @@ border-width: 3px;</string>
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="labelShowedData">
        <property name="styleSheet">
         <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -1749,7 +1749,7 @@ border-color: #4d4018;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="widget_7" native="true">
+   <widget class="QWidget" name="widgetAllData" native="true">
     <property name="geometry">
      <rect>
       <x>850</x>
@@ -1766,7 +1766,7 @@ border-color: #556B2F;</string>
     </property>
     <layout class="QGridLayout" name="gridLayout_9">
      <item row="0" column="3">
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="labelAllDataNumber">
        <property name="styleSheet">
         <string notr="true">background-color: #ff9b0f;
 color: black;
@@ -1780,7 +1780,7 @@ border-width: 3px;</string>
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="labelAllData">
        <property name="styleSheet">
         <string notr="true">background-color: #ff9b0f;
 color: black;
