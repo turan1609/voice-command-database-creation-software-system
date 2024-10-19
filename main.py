@@ -138,6 +138,87 @@ def LISTALLDATA():
     print("Sorgu")
     numberVoice = curs.fetchone()
     ui.labelShowedDataNumber.setText(str(numberVoice[0]))
+
+
+def FILTERDATA():
+    # Dil kontrolleri
+    english_selected = ui.radioButtonFilterLanguageEnglish.isChecked()
+    turkish_selected = ui.radioButtonFilterLanguageTurkish.isChecked()
+
+    # Cinsiyet kontrolleri
+    male_selected = ui.radioButtonFilterGenderMale.isChecked()
+    female_selected = ui.radioButtonFilterGenderFemale.isChecked()
+
+    # Dil kontrolü
+    if not (turkish_selected or english_selected):
+        QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir dil seçin.")
+        return  # Fonksiyonu sonlandır
+
+    # Cinsiyet kontrolü
+    if not (male_selected or female_selected):
+        QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir cinsiyet seçin.")
+        return  # Fonksiyonu sonlandır
+
+    # Seçilen dillerin listesini oluştur
+    languages = []
+    if turkish_selected:
+        languages.append("tr")
+    if english_selected:
+        languages.append("en")
+
+    # Seçilen cinsiyetlerin listesini oluştur
+    genders = []
+    if male_selected:
+        genders.append("Male")
+    if female_selected:
+        genders.append("Female")
+
+    name_selected=ui.comboBoxFilterName.currentText()
+    commend_selected=ui.comboBoxFilterCommend.currentText()
+    # Sorguyu oluştur
+    query = "SELECT * FROM spor WHERE Language IN ({}) AND Gender IN ({})".format(
+        ', '.join('?' * len(languages)),
+        ', '.join('?' * len(genders))
+    )
+    params = languages + genders + name_selected + commend_selected
+
+    # Filtreleme sorgusu
+    curs.execute(query + " OR Name=? OR Commend=?", params)
+
+    # Sonuçları işleme
+    results = curs.fetchall()
+
+    scrollAreaWidgetContents_2 = ui.scrollAreaWidgetContents_2
+
+    if scrollAreaWidgetContents_2.layout() is None:
+        verticalLayout = QVBoxLayout(scrollAreaWidgetContents_2)
+        scrollAreaWidgetContents_2.setLayout(verticalLayout)
+        print("Yeni layout oluşturuldu.")
+    else:
+        verticalLayout = scrollAreaWidgetContents_2.layout()
+        print("Mevcut layout bulundu.")
+
+    for i in reversed(range(verticalLayout.count())):
+        widget_to_remove = verticalLayout.itemAt(i).widget()
+        if widget_to_remove is not None:
+            widget_to_remove.deleteLater()
+
+    for satirVeri in results:
+        # satirVeri'yi dictionary formatında alıyorsanız, ona göre verileri ayarlayın
+        data = {
+            "Language": satirVeri[1],
+            "Gender": satirVeri[2],
+            "Name": satirVeri[3],
+            "Commend": satirVeri[4],
+            "Progress": 0
+        }
+
+        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"],data["Progress"])
+        verticalLayout.addWidget(custom_widget)
+        print(f"Widget eklendi: {data['Name']}")
+
+
+
 # Uygulamayı başlat
 penAna.show()
 
