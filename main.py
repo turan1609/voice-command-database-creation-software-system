@@ -23,6 +23,7 @@ class CustomWidget(QtWidgets.QWidget):
         )
         # Media Player
         self.player = QMediaPlayer()
+        self.player.setVolume(100)
 
         # Play Butonu
         self.pushButtonCardExamplePlay = QPushButton('Play')
