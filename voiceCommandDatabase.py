@@ -535,38 +535,38 @@ class Ui_MainWindow(object):
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(30, 20, 432, 311))
-        self.frame.setStyleSheet("background-color:#ffa850;\n"
+        self.frameFilter = QtWidgets.QFrame(self.centralwidget)
+        self.frameFilter.setGeometry(QtCore.QRect(30, 20, 432, 311))
+        self.frameFilter.setStyleSheet("background-color:#ffa850;\n"
 "border-style: solid;\n"
 "border-width: 5px;\n"
 "border-color: #556B2F;\n"
 "border-radius: 5px;")
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.frame)
+        self.frameFilter.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frameFilter.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frameFilter.setObjectName("frameFilter")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.frameFilter)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.widget = QtWidgets.QWidget(self.frame)
-        self.widget.setStyleSheet("border-style: solid;\n"
+        self.widgetFilterLanguage = QtWidgets.QWidget(self.frameFilter)
+        self.widgetFilterLanguage.setStyleSheet("border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ffe5d8;")
-        self.widget.setObjectName("widget")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.widget)
+        self.widgetFilterLanguage.setObjectName("widgetFilterLanguage")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.widgetFilterLanguage)
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.horizontalLayout_22 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_22.setObjectName("horizontalLayout_22")
-        self.label = QtWidgets.QLabel(self.widget)
-        self.label.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelFilterLanguage = QtWidgets.QLabel(self.widgetFilterLanguage)
+        self.labelFilterLanguage.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;")
-        self.label.setObjectName("label")
-        self.horizontalLayout_22.addWidget(self.label)
+        self.labelFilterLanguage.setObjectName("labelFilterLanguage")
+        self.horizontalLayout_22.addWidget(self.labelFilterLanguage)
         spacerItem = QtWidgets.QSpacerItem(13, 17, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_22.addItem(spacerItem)
-        self.radioButton = QtWidgets.QRadioButton(self.widget)
-        self.radioButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.radioButton.setStyleSheet("QRadioButton{\n"
+        self.radioButtonFilterLanguageTurkish = QtWidgets.QRadioButton(self.widgetFilterLanguage)
+        self.radioButtonFilterLanguageTurkish.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.radioButtonFilterLanguageTurkish.setStyleSheet("QRadioButton{\n"
 "    background-color: #ff6d49;\n"
 "    color: black;;\n"
 "    border-color: #4d4018;\n"
@@ -576,15 +576,15 @@ class Ui_MainWindow(object):
 "    background-color: red;\n"
 "}\n"
 "")
-        self.radioButton.setChecked(True)
-        self.radioButton.setAutoExclusive(False)
-        self.radioButton.setObjectName("radioButton")
-        self.horizontalLayout_22.addWidget(self.radioButton)
+        self.radioButtonFilterLanguageTurkish.setChecked(True)
+        self.radioButtonFilterLanguageTurkish.setAutoExclusive(False)
+        self.radioButtonFilterLanguageTurkish.setObjectName("radioButtonFilterLanguageTurkish")
+        self.horizontalLayout_22.addWidget(self.radioButtonFilterLanguageTurkish)
         spacerItem1 = QtWidgets.QSpacerItem(88, 77, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_22.addItem(spacerItem1)
-        self.radioButton_2 = QtWidgets.QRadioButton(self.widget)
-        self.radioButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.radioButton_2.setStyleSheet("QRadioButton{\n"
+        self.radioButtonFilterLanguageEnglish = QtWidgets.QRadioButton(self.widgetFilterLanguage)
+        self.radioButtonFilterLanguageEnglish.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.radioButtonFilterLanguageEnglish.setStyleSheet("QRadioButton{\n"
 "    background-color: #ff6d49;\n"
 "    color: black;;\n"
 "    border-color: #4d4018;\n"
@@ -594,30 +594,30 @@ class Ui_MainWindow(object):
 "    background-color: red;\n"
 "}\n"
 "")
-        self.radioButton_2.setChecked(True)
-        self.radioButton_2.setAutoExclusive(False)
-        self.radioButton_2.setObjectName("radioButton_2")
-        self.horizontalLayout_22.addWidget(self.radioButton_2)
+        self.radioButtonFilterLanguageEnglish.setChecked(True)
+        self.radioButtonFilterLanguageEnglish.setAutoExclusive(False)
+        self.radioButtonFilterLanguageEnglish.setObjectName("radioButtonFilterLanguageEnglish")
+        self.horizontalLayout_22.addWidget(self.radioButtonFilterLanguageEnglish)
         self.gridLayout_5.addLayout(self.horizontalLayout_22, 0, 0, 1, 1)
-        self.verticalLayout_3.addWidget(self.widget)
-        self.widget_3 = QtWidgets.QWidget(self.frame)
-        self.widget_3.setStyleSheet("border-style: solid;\n"
+        self.verticalLayout_3.addWidget(self.widgetFilterLanguage)
+        self.widgetFilterGender = QtWidgets.QWidget(self.frameFilter)
+        self.widgetFilterGender.setStyleSheet("border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ffe5d8;")
-        self.widget_3.setObjectName("widget_3")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.widget_3)
+        self.widgetFilterGender.setObjectName("widgetFilterGender")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.widgetFilterGender)
         self.gridLayout_4.setObjectName("gridLayout_4")
-        self.label_2 = QtWidgets.QLabel(self.widget_3)
-        self.label_2.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelFilterGender = QtWidgets.QLabel(self.widgetFilterGender)
+        self.labelFilterGender.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;")
-        self.label_2.setObjectName("label_2")
-        self.gridLayout_4.addWidget(self.label_2, 0, 0, 1, 1)
+        self.labelFilterGender.setObjectName("labelFilterGender")
+        self.gridLayout_4.addWidget(self.labelFilterGender, 0, 0, 1, 1)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_4.addItem(spacerItem2, 0, 1, 1, 1)
-        self.radioButton_3 = QtWidgets.QRadioButton(self.widget_3)
-        self.radioButton_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.radioButton_3.setStyleSheet("QRadioButton{\n"
+        self.radioButtonFilterGenderMale = QtWidgets.QRadioButton(self.widgetFilterGender)
+        self.radioButtonFilterGenderMale.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.radioButtonFilterGenderMale.setStyleSheet("QRadioButton{\n"
 "    background-color: #ff6d49;\n"
 "    color: black;;\n"
 "    border-color: #4d4018;\n"
@@ -627,15 +627,15 @@ class Ui_MainWindow(object):
 "    background-color: red;\n"
 "}\n"
 "")
-        self.radioButton_3.setChecked(True)
-        self.radioButton_3.setAutoExclusive(False)
-        self.radioButton_3.setObjectName("radioButton_3")
-        self.gridLayout_4.addWidget(self.radioButton_3, 0, 2, 1, 1)
+        self.radioButtonFilterGenderMale.setChecked(True)
+        self.radioButtonFilterGenderMale.setAutoExclusive(False)
+        self.radioButtonFilterGenderMale.setObjectName("radioButtonFilterGenderMale")
+        self.gridLayout_4.addWidget(self.radioButtonFilterGenderMale, 0, 2, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_4.addItem(spacerItem3, 0, 3, 1, 1)
-        self.radioButton_4 = QtWidgets.QRadioButton(self.widget_3)
-        self.radioButton_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.radioButton_4.setStyleSheet("QRadioButton{\n"
+        self.radioButtonFilterGenderFemale = QtWidgets.QRadioButton(self.widgetFilterGender)
+        self.radioButtonFilterGenderFemale.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.radioButtonFilterGenderFemale.setStyleSheet("QRadioButton{\n"
 "    background-color: #ff6d49;\n"
 "    color: black;;\n"
 "    border-color: #4d4018;\n"
@@ -645,30 +645,30 @@ class Ui_MainWindow(object):
 "    background-color: red;\n"
 "}\n"
 "")
-        self.radioButton_4.setChecked(True)
-        self.radioButton_4.setAutoExclusive(False)
-        self.radioButton_4.setObjectName("radioButton_4")
-        self.gridLayout_4.addWidget(self.radioButton_4, 0, 4, 1, 1)
-        self.verticalLayout_3.addWidget(self.widget_3)
-        self.widget_2 = QtWidgets.QWidget(self.frame)
-        self.widget_2.setStyleSheet("border-style: solid;\n"
+        self.radioButtonFilterGenderFemale.setChecked(True)
+        self.radioButtonFilterGenderFemale.setAutoExclusive(False)
+        self.radioButtonFilterGenderFemale.setObjectName("radioButtonFilterGenderFemale")
+        self.gridLayout_4.addWidget(self.radioButtonFilterGenderFemale, 0, 4, 1, 1)
+        self.verticalLayout_3.addWidget(self.widgetFilterGender)
+        self.widgetFilterName = QtWidgets.QWidget(self.frameFilter)
+        self.widgetFilterName.setStyleSheet("border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ffe5d8;")
-        self.widget_2.setObjectName("widget_2")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.widget_2)
+        self.widgetFilterName.setObjectName("widgetFilterName")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.widgetFilterName)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.horizontalLayout_21 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_21.setObjectName("horizontalLayout_21")
-        self.label_18 = QtWidgets.QLabel(self.widget_2)
-        self.label_18.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelFilterName = QtWidgets.QLabel(self.widgetFilterName)
+        self.labelFilterName.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;")
-        self.label_18.setObjectName("label_18")
-        self.horizontalLayout_21.addWidget(self.label_18)
+        self.labelFilterName.setObjectName("labelFilterName")
+        self.horizontalLayout_21.addWidget(self.labelFilterName)
         self.gridLayout_3.addLayout(self.horizontalLayout_21, 0, 0, 1, 1)
-        self.comboBox = QtWidgets.QComboBox(self.widget_2)
-        self.comboBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.comboBox.setStyleSheet("QComboBox{\n"
+        self.comboBoxFilterName = QtWidgets.QComboBox(self.widgetFilterName)
+        self.comboBoxFilterName.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.comboBoxFilterName.setStyleSheet("QComboBox{\n"
 "    background-color: #ff6d49;\n"
 "    color: black;;\n"
 "    border-color: #4d4018;\n"
@@ -678,39 +678,39 @@ class Ui_MainWindow(object):
 "    background-color: red;\n"
 "}\n"
 "")
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.gridLayout_3.addWidget(self.comboBox, 0, 1, 1, 1)
-        self.verticalLayout_3.addWidget(self.widget_2)
-        self.widget_4 = QtWidgets.QWidget(self.frame)
-        self.widget_4.setStyleSheet("border-style: solid;\n"
+        self.comboBoxFilterName.setObjectName("comboBoxFilterName")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.comboBoxFilterName.addItem("")
+        self.gridLayout_3.addWidget(self.comboBoxFilterName, 0, 1, 1, 1)
+        self.verticalLayout_3.addWidget(self.widgetFilterName)
+        self.widgetFilterCommend = QtWidgets.QWidget(self.frameFilter)
+        self.widgetFilterCommend.setStyleSheet("border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ffe5d8;")
-        self.widget_4.setObjectName("widget_4")
-        self.gridLayout_10 = QtWidgets.QGridLayout(self.widget_4)
+        self.widgetFilterCommend.setObjectName("widgetFilterCommend")
+        self.gridLayout_10 = QtWidgets.QGridLayout(self.widgetFilterCommend)
         self.gridLayout_10.setObjectName("gridLayout_10")
         self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_27.setObjectName("horizontalLayout_27")
-        self.label_19 = QtWidgets.QLabel(self.widget_4)
-        self.label_19.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelFilterCommend = QtWidgets.QLabel(self.widgetFilterCommend)
+        self.labelFilterCommend.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;")
-        self.label_19.setObjectName("label_19")
-        self.horizontalLayout_27.addWidget(self.label_19)
+        self.labelFilterCommend.setObjectName("labelFilterCommend")
+        self.horizontalLayout_27.addWidget(self.labelFilterCommend)
         self.gridLayout_10.addLayout(self.horizontalLayout_27, 0, 0, 1, 1)
-        self.comboBox_2 = QtWidgets.QComboBox(self.widget_4)
-        self.comboBox_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.comboBox_2.setStyleSheet("QComboBox{\n"
+        self.comboBoxFilterCommend = QtWidgets.QComboBox(self.widgetFilterCommend)
+        self.comboBoxFilterCommend.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.comboBoxFilterCommend.setStyleSheet("QComboBox{\n"
 "    background-color: #ff6d49;\n"
 "    color: black;;\n"
 "    border-color: #4d4018;\n"
@@ -720,383 +720,53 @@ class Ui_MainWindow(object):
 "    background-color: red;\n"
 "}\n"
 "")
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.gridLayout_10.addWidget(self.comboBox_2, 0, 1, 1, 1)
-        self.verticalLayout_3.addWidget(self.widget_4)
-        self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setGeometry(QtCore.QRect(500, 20, 521, 311))
-        self.frame_2.setStyleSheet("background-color:#ffa850;\n"
+        self.comboBoxFilterCommend.setObjectName("comboBoxFilterCommend")
+        self.comboBoxFilterCommend.addItem("")
+        self.comboBoxFilterCommend.addItem("")
+        self.comboBoxFilterCommend.addItem("")
+        self.comboBoxFilterCommend.addItem("")
+        self.gridLayout_10.addWidget(self.comboBoxFilterCommend, 0, 1, 1, 1)
+        self.verticalLayout_3.addWidget(self.widgetFilterCommend)
+        self.frameList = QtWidgets.QFrame(self.centralwidget)
+        self.frameList.setGeometry(QtCore.QRect(500, 20, 521, 311))
+        self.frameList.setStyleSheet("background-color:#ffa850;\n"
 "border-style: solid;\n"
 "border-width: 5px;\n"
 "border-color: #556B2F;\n"
 "border-radius: 5px;")
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.gridLayout_7 = QtWidgets.QGridLayout(self.frame_2)
+        self.frameList.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frameList.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frameList.setObjectName("frameList")
+        self.gridLayout_7 = QtWidgets.QGridLayout(self.frameList)
         self.gridLayout_7.setObjectName("gridLayout_7")
-        self.scrollArea_2 = QtWidgets.QScrollArea(self.frame_2)
-        self.scrollArea_2.setStyleSheet("border-style: solid;\n"
+        self.scrollAreaList = QtWidgets.QScrollArea(self.frameList)
+        self.scrollAreaList.setStyleSheet("border-style: solid;\n"
 "border-width: 2px;\n"
 "background-color: #ffe5d8;")
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollAreaList.setWidgetResizable(True)
+        self.scrollAreaList.setObjectName("scrollAreaList")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 478, 425))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 485, 275))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.widget_6 = QtWidgets.QWidget(self.scrollAreaWidgetContents_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_6.sizePolicy().hasHeightForWidth())
-        self.widget_6.setSizePolicy(sizePolicy)
-        self.widget_6.setMinimumSize(QtCore.QSize(200, 75))
-        self.widget_6.setStyleSheet("border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ffe5d8;")
-        self.widget_6.setObjectName("widget_6")
-        self.gridLayout_15 = QtWidgets.QGridLayout(self.widget_6)
-        self.gridLayout_15.setObjectName("gridLayout_15")
-        self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
-        self.pushButton_12 = QtWidgets.QPushButton(self.widget_6)
-        self.pushButton_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_12.setStyleSheet("QPushButton {\n"
-"border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ff6d49;\n"
-"border-color: #4d4018;\n"
-"color: black;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: red;\n"
-"    \n"
-"}")
-        self.pushButton_12.setObjectName("pushButton_12")
-        self.horizontalLayout_15.addWidget(self.pushButton_12)
-        self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
-        self.label_36 = QtWidgets.QLabel(self.widget_6)
-        self.label_36.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;\n"
-"")
-        self.label_36.setObjectName("label_36")
-        self.horizontalLayout_16.addWidget(self.label_36)
-        self.label_37 = QtWidgets.QLabel(self.widget_6)
-        self.label_37.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_37.setObjectName("label_37")
-        self.horizontalLayout_16.addWidget(self.label_37)
-        self.label_38 = QtWidgets.QLabel(self.widget_6)
-        self.label_38.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_38.setObjectName("label_38")
-        self.horizontalLayout_16.addWidget(self.label_38)
-        self.label_39 = QtWidgets.QLabel(self.widget_6)
-        self.label_39.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_39.setObjectName("label_39")
-        self.horizontalLayout_16.addWidget(self.label_39)
-        self.progressBar_8 = QtWidgets.QProgressBar(self.widget_6)
-        self.progressBar_8.setStyleSheet("background-color: black;\n"
-"border-color: #4d4018;")
-        self.progressBar_8.setProperty("value", 24)
-        self.progressBar_8.setObjectName("progressBar_8")
-        self.horizontalLayout_16.addWidget(self.progressBar_8)
-        self.horizontalLayout_15.addLayout(self.horizontalLayout_16)
-        self.gridLayout_15.addLayout(self.horizontalLayout_15, 0, 0, 1, 1)
-        self.verticalLayout_2.addWidget(self.widget_6)
-        self.widget_12 = QtWidgets.QWidget(self.scrollAreaWidgetContents_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_12.sizePolicy().hasHeightForWidth())
-        self.widget_12.setSizePolicy(sizePolicy)
-        self.widget_12.setMinimumSize(QtCore.QSize(200, 75))
-        self.widget_12.setStyleSheet("border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ffe5d8;")
-        self.widget_12.setObjectName("widget_12")
-        self.gridLayout_16 = QtWidgets.QGridLayout(self.widget_12)
-        self.gridLayout_16.setObjectName("gridLayout_16")
-        self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
-        self.pushButton_13 = QtWidgets.QPushButton(self.widget_12)
-        self.pushButton_13.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_13.setStyleSheet("QPushButton {\n"
-"border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ff6d49;\n"
-"border-color: #4d4018;\n"
-"color: black;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: red;\n"
-"    \n"
-"}")
-        self.pushButton_13.setObjectName("pushButton_13")
-        self.horizontalLayout_17.addWidget(self.pushButton_13)
-        self.horizontalLayout_18 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
-        self.label_40 = QtWidgets.QLabel(self.widget_12)
-        self.label_40.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;\n"
-"")
-        self.label_40.setObjectName("label_40")
-        self.horizontalLayout_18.addWidget(self.label_40)
-        self.label_41 = QtWidgets.QLabel(self.widget_12)
-        self.label_41.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_41.setObjectName("label_41")
-        self.horizontalLayout_18.addWidget(self.label_41)
-        self.label_42 = QtWidgets.QLabel(self.widget_12)
-        self.label_42.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_42.setObjectName("label_42")
-        self.horizontalLayout_18.addWidget(self.label_42)
-        self.label_43 = QtWidgets.QLabel(self.widget_12)
-        self.label_43.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_43.setObjectName("label_43")
-        self.horizontalLayout_18.addWidget(self.label_43)
-        self.progressBar_9 = QtWidgets.QProgressBar(self.widget_12)
-        self.progressBar_9.setStyleSheet("background-color: black;\n"
-"border-color: #4d4018;")
-        self.progressBar_9.setProperty("value", 24)
-        self.progressBar_9.setObjectName("progressBar_9")
-        self.horizontalLayout_18.addWidget(self.progressBar_9)
-        self.horizontalLayout_17.addLayout(self.horizontalLayout_18)
-        self.gridLayout_16.addLayout(self.horizontalLayout_17, 0, 0, 1, 1)
-        self.verticalLayout_2.addWidget(self.widget_12)
-        self.widget_13 = QtWidgets.QWidget(self.scrollAreaWidgetContents_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_13.sizePolicy().hasHeightForWidth())
-        self.widget_13.setSizePolicy(sizePolicy)
-        self.widget_13.setMinimumSize(QtCore.QSize(200, 75))
-        self.widget_13.setStyleSheet("border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ffe5d8;")
-        self.widget_13.setObjectName("widget_13")
-        self.gridLayout_17 = QtWidgets.QGridLayout(self.widget_13)
-        self.gridLayout_17.setObjectName("gridLayout_17")
-        self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_19.setObjectName("horizontalLayout_19")
-        self.pushButton_14 = QtWidgets.QPushButton(self.widget_13)
-        self.pushButton_14.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_14.setStyleSheet("QPushButton {\n"
-"border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ff6d49;\n"
-"border-color: #4d4018;\n"
-"color: black;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: red;\n"
-"    \n"
-"}")
-        self.pushButton_14.setObjectName("pushButton_14")
-        self.horizontalLayout_19.addWidget(self.pushButton_14)
-        self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
-        self.label_44 = QtWidgets.QLabel(self.widget_13)
-        self.label_44.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;\n"
-"")
-        self.label_44.setObjectName("label_44")
-        self.horizontalLayout_20.addWidget(self.label_44)
-        self.label_45 = QtWidgets.QLabel(self.widget_13)
-        self.label_45.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_45.setObjectName("label_45")
-        self.horizontalLayout_20.addWidget(self.label_45)
-        self.label_46 = QtWidgets.QLabel(self.widget_13)
-        self.label_46.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_46.setObjectName("label_46")
-        self.horizontalLayout_20.addWidget(self.label_46)
-        self.label_47 = QtWidgets.QLabel(self.widget_13)
-        self.label_47.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_47.setObjectName("label_47")
-        self.horizontalLayout_20.addWidget(self.label_47)
-        self.progressBar_10 = QtWidgets.QProgressBar(self.widget_13)
-        self.progressBar_10.setStyleSheet("background-color: black;\n"
-"border-color: #4d4018;")
-        self.progressBar_10.setProperty("value", 24)
-        self.progressBar_10.setObjectName("progressBar_10")
-        self.horizontalLayout_20.addWidget(self.progressBar_10)
-        self.horizontalLayout_19.addLayout(self.horizontalLayout_20)
-        self.gridLayout_17.addLayout(self.horizontalLayout_19, 0, 0, 1, 1)
-        self.verticalLayout_2.addWidget(self.widget_13)
-        self.widget_14 = QtWidgets.QWidget(self.scrollAreaWidgetContents_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_14.sizePolicy().hasHeightForWidth())
-        self.widget_14.setSizePolicy(sizePolicy)
-        self.widget_14.setMinimumSize(QtCore.QSize(200, 75))
-        self.widget_14.setStyleSheet("border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ffe5d8;")
-        self.widget_14.setObjectName("widget_14")
-        self.gridLayout_18 = QtWidgets.QGridLayout(self.widget_14)
-        self.gridLayout_18.setObjectName("gridLayout_18")
-        self.horizontalLayout_23 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_23.setObjectName("horizontalLayout_23")
-        self.pushButton_15 = QtWidgets.QPushButton(self.widget_14)
-        self.pushButton_15.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_15.setStyleSheet("QPushButton {\n"
-"border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ff6d49;\n"
-"border-color: #4d4018;\n"
-"color: black;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: red;\n"
-"    \n"
-"}")
-        self.pushButton_15.setObjectName("pushButton_15")
-        self.horizontalLayout_23.addWidget(self.pushButton_15)
-        self.horizontalLayout_24 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_24.setObjectName("horizontalLayout_24")
-        self.label_48 = QtWidgets.QLabel(self.widget_14)
-        self.label_48.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;\n"
-"")
-        self.label_48.setObjectName("label_48")
-        self.horizontalLayout_24.addWidget(self.label_48)
-        self.label_49 = QtWidgets.QLabel(self.widget_14)
-        self.label_49.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_49.setObjectName("label_49")
-        self.horizontalLayout_24.addWidget(self.label_49)
-        self.label_50 = QtWidgets.QLabel(self.widget_14)
-        self.label_50.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_50.setObjectName("label_50")
-        self.horizontalLayout_24.addWidget(self.label_50)
-        self.label_51 = QtWidgets.QLabel(self.widget_14)
-        self.label_51.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_51.setObjectName("label_51")
-        self.horizontalLayout_24.addWidget(self.label_51)
-        self.progressBar_11 = QtWidgets.QProgressBar(self.widget_14)
-        self.progressBar_11.setStyleSheet("background-color: black;\n"
-"border-color: #4d4018;")
-        self.progressBar_11.setProperty("value", 24)
-        self.progressBar_11.setObjectName("progressBar_11")
-        self.horizontalLayout_24.addWidget(self.progressBar_11)
-        self.horizontalLayout_23.addLayout(self.horizontalLayout_24)
-        self.gridLayout_18.addLayout(self.horizontalLayout_23, 0, 0, 1, 1)
-        self.verticalLayout_2.addWidget(self.widget_14)
-        self.widget_15 = QtWidgets.QWidget(self.scrollAreaWidgetContents_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_15.sizePolicy().hasHeightForWidth())
-        self.widget_15.setSizePolicy(sizePolicy)
-        self.widget_15.setMinimumSize(QtCore.QSize(200, 75))
-        self.widget_15.setStyleSheet("border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ffe5d8;")
-        self.widget_15.setObjectName("widget_15")
-        self.gridLayout_19 = QtWidgets.QGridLayout(self.widget_15)
-        self.gridLayout_19.setObjectName("gridLayout_19")
-        self.horizontalLayout_25 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_25.setObjectName("horizontalLayout_25")
-        self.pushButton_16 = QtWidgets.QPushButton(self.widget_15)
-        self.pushButton_16.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_16.setStyleSheet("QPushButton {\n"
-"border-style: solid;\n"
-"border-width: 3px;\n"
-"background-color: #ff6d49;\n"
-"border-color: #4d4018;\n"
-"color: black;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: red;\n"
-"    \n"
-"}")
-        self.pushButton_16.setObjectName("pushButton_16")
-        self.horizontalLayout_25.addWidget(self.pushButton_16)
-        self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_26.setObjectName("horizontalLayout_26")
-        self.label_52 = QtWidgets.QLabel(self.widget_15)
-        self.label_52.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;\n"
-"")
-        self.label_52.setObjectName("label_52")
-        self.horizontalLayout_26.addWidget(self.label_52)
-        self.label_53 = QtWidgets.QLabel(self.widget_15)
-        self.label_53.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_53.setObjectName("label_53")
-        self.horizontalLayout_26.addWidget(self.label_53)
-        self.label_54 = QtWidgets.QLabel(self.widget_15)
-        self.label_54.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_54.setObjectName("label_54")
-        self.horizontalLayout_26.addWidget(self.label_54)
-        self.label_55 = QtWidgets.QLabel(self.widget_15)
-        self.label_55.setStyleSheet("background-color: #ff9b0f;\n"
-"color: black;\n"
-"border-color: #4d4018;")
-        self.label_55.setObjectName("label_55")
-        self.horizontalLayout_26.addWidget(self.label_55)
-        self.progressBar_12 = QtWidgets.QProgressBar(self.widget_15)
-        self.progressBar_12.setStyleSheet("background-color: black;\n"
-"border-color: #4d4018;")
-        self.progressBar_12.setProperty("value", 24)
-        self.progressBar_12.setObjectName("progressBar_12")
-        self.horizontalLayout_26.addWidget(self.progressBar_12)
-        self.horizontalLayout_25.addLayout(self.horizontalLayout_26)
-        self.gridLayout_19.addLayout(self.horizontalLayout_25, 0, 0, 1, 1)
-        self.verticalLayout_2.addWidget(self.widget_15)
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-        self.gridLayout_7.addWidget(self.scrollArea_2, 1, 0, 1, 1)
-        self.frame_3 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_3.setGeometry(QtCore.QRect(30, 360, 521, 61))
-        self.frame_3.setStyleSheet("background-color:#ffa850;\n"
+        self.scrollAreaList.setWidget(self.scrollAreaWidgetContents_2)
+        self.gridLayout_7.addWidget(self.scrollAreaList, 1, 0, 1, 1)
+        self.frameButtons = QtWidgets.QFrame(self.centralwidget)
+        self.frameButtons.setGeometry(QtCore.QRect(30, 360, 521, 61))
+        self.frameButtons.setStyleSheet("background-color:#ffa850;\n"
 "border-style: solid;\n"
 "border-width: 5px;\n"
 "border-color: #556B2F;\n"
 "border-radius: 5px;")
-        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_3.setObjectName("frame_3")
-        self.gridLayout_8 = QtWidgets.QGridLayout(self.frame_3)
+        self.frameButtons.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frameButtons.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frameButtons.setObjectName("frameButtons")
+        self.gridLayout_8 = QtWidgets.QGridLayout(self.frameButtons)
         self.gridLayout_8.setObjectName("gridLayout_8")
-        self.pushButton_7 = QtWidgets.QPushButton(self.frame_3)
-        self.pushButton_7.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_7.setStyleSheet("QPushButton {\n"
+        self.pushButtonButtonsFilterData = QtWidgets.QPushButton(self.frameButtons)
+        self.pushButtonButtonsFilterData.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButtonButtonsFilterData.setStyleSheet("QPushButton {\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ff6d49;\n"
@@ -1111,11 +781,11 @@ class Ui_MainWindow(object):
 "    background-color: orange;\n"
 "    \n"
 "}")
-        self.pushButton_7.setObjectName("pushButton_7")
-        self.gridLayout_8.addWidget(self.pushButton_7, 0, 0, 1, 1)
-        self.pushButton_8 = QtWidgets.QPushButton(self.frame_3)
-        self.pushButton_8.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_8.setStyleSheet("QPushButton {\n"
+        self.pushButtonButtonsFilterData.setObjectName("pushButtonButtonsFilterData")
+        self.gridLayout_8.addWidget(self.pushButtonButtonsFilterData, 0, 0, 1, 1)
+        self.pushButtonButtonsShowAllData = QtWidgets.QPushButton(self.frameButtons)
+        self.pushButtonButtonsShowAllData.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButtonButtonsShowAllData.setStyleSheet("QPushButton {\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ff6d49;\n"
@@ -1130,11 +800,11 @@ class Ui_MainWindow(object):
 "    background-color: orange;\n"
 "    \n"
 "}")
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.gridLayout_8.addWidget(self.pushButton_8, 0, 1, 1, 1)
-        self.pushButton_9 = QtWidgets.QPushButton(self.frame_3)
-        self.pushButton_9.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_9.setStyleSheet("QPushButton {\n"
+        self.pushButtonButtonsShowAllData.setObjectName("pushButtonButtonsShowAllData")
+        self.gridLayout_8.addWidget(self.pushButtonButtonsShowAllData, 0, 1, 1, 1)
+        self.pushButtonButtonsDownloadData = QtWidgets.QPushButton(self.frameButtons)
+        self.pushButtonButtonsDownloadData.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButtonButtonsDownloadData.setStyleSheet("QPushButton {\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ff6d49;\n"
@@ -1149,11 +819,11 @@ class Ui_MainWindow(object):
 "    background-color: orange;\n"
 "    \n"
 "}")
-        self.pushButton_9.setObjectName("pushButton_9")
-        self.gridLayout_8.addWidget(self.pushButton_9, 0, 2, 1, 1)
-        self.pushButton_4 = QtWidgets.QPushButton(self.frame_3)
-        self.pushButton_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_4.setStyleSheet("QPushButton {\n"
+        self.pushButtonButtonsDownloadData.setObjectName("pushButtonButtonsDownloadData")
+        self.gridLayout_8.addWidget(self.pushButtonButtonsDownloadData, 0, 2, 1, 1)
+        self.pushButtonButtonsClearData = QtWidgets.QPushButton(self.frameButtons)
+        self.pushButtonButtonsClearData.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButtonButtonsClearData.setStyleSheet("QPushButton {\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ff6d49;\n"
@@ -1168,58 +838,58 @@ class Ui_MainWindow(object):
 "    background-color: orange;\n"
 "    \n"
 "}")
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.gridLayout_8.addWidget(self.pushButton_4, 0, 3, 1, 1)
-        self.widget_5 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_5.setGeometry(QtCore.QRect(600, 360, 171, 61))
-        self.widget_5.setStyleSheet("border-style: solid;\n"
+        self.pushButtonButtonsClearData.setObjectName("pushButtonButtonsClearData")
+        self.gridLayout_8.addWidget(self.pushButtonButtonsClearData, 0, 3, 1, 1)
+        self.widgetShowedData = QtWidgets.QWidget(self.centralwidget)
+        self.widgetShowedData.setGeometry(QtCore.QRect(600, 360, 171, 61))
+        self.widgetShowedData.setStyleSheet("border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ffe5d8;\n"
 "border-color: #556B2F;")
-        self.widget_5.setObjectName("widget_5")
-        self.gridLayout_6 = QtWidgets.QGridLayout(self.widget_5)
+        self.widgetShowedData.setObjectName("widgetShowedData")
+        self.gridLayout_6 = QtWidgets.QGridLayout(self.widgetShowedData)
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_6.setObjectName("gridLayout_6")
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_6.addItem(spacerItem4, 0, 1, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.widget_5)
-        self.label_4.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelShowedDataNumber = QtWidgets.QLabel(self.widgetShowedData)
+        self.labelShowedDataNumber.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;\n"
 "border-style: solid;\n"
 "border-width: 3px;")
-        self.label_4.setObjectName("label_4")
-        self.gridLayout_6.addWidget(self.label_4, 0, 3, 1, 1)
-        self.label_5 = QtWidgets.QLabel(self.widget_5)
-        self.label_5.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelShowedDataNumber.setObjectName("labelShowedDataNumber")
+        self.gridLayout_6.addWidget(self.labelShowedDataNumber, 0, 3, 1, 1)
+        self.labelShowedData = QtWidgets.QLabel(self.widgetShowedData)
+        self.labelShowedData.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;")
-        self.label_5.setObjectName("label_5")
-        self.gridLayout_6.addWidget(self.label_5, 0, 0, 1, 1)
-        self.widget_7 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_7.setGeometry(QtCore.QRect(850, 360, 171, 61))
-        self.widget_7.setStyleSheet("border-style: solid;\n"
+        self.labelShowedData.setObjectName("labelShowedData")
+        self.gridLayout_6.addWidget(self.labelShowedData, 0, 0, 1, 1)
+        self.widgetAllData = QtWidgets.QWidget(self.centralwidget)
+        self.widgetAllData.setGeometry(QtCore.QRect(850, 360, 171, 61))
+        self.widgetAllData.setStyleSheet("border-style: solid;\n"
 "border-width: 3px;\n"
 "background-color: #ffe5d8;\n"
 "border-color: #556B2F;")
-        self.widget_7.setObjectName("widget_7")
-        self.gridLayout_9 = QtWidgets.QGridLayout(self.widget_7)
+        self.widgetAllData.setObjectName("widgetAllData")
+        self.gridLayout_9 = QtWidgets.QGridLayout(self.widgetAllData)
         self.gridLayout_9.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_9.setObjectName("gridLayout_9")
-        self.label_6 = QtWidgets.QLabel(self.widget_7)
-        self.label_6.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelAllDataNumber = QtWidgets.QLabel(self.widgetAllData)
+        self.labelAllDataNumber.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;\n"
 "border-style: solid;\n"
 "border-width: 3px;")
-        self.label_6.setObjectName("label_6")
-        self.gridLayout_9.addWidget(self.label_6, 0, 3, 1, 1)
-        self.label_7 = QtWidgets.QLabel(self.widget_7)
-        self.label_7.setStyleSheet("background-color: #ff9b0f;\n"
+        self.labelAllDataNumber.setObjectName("labelAllDataNumber")
+        self.gridLayout_9.addWidget(self.labelAllDataNumber, 0, 3, 1, 1)
+        self.labelAllData = QtWidgets.QLabel(self.widgetAllData)
+        self.labelAllData.setStyleSheet("background-color: #ff9b0f;\n"
 "color: black;\n"
 "border-color: #4d4018;")
-        self.label_7.setObjectName("label_7")
-        self.gridLayout_9.addWidget(self.label_7, 0, 0, 1, 1)
+        self.labelAllData.setObjectName("labelAllData")
+        self.gridLayout_9.addWidget(self.labelAllData, 0, 0, 1, 1)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_9.addItem(spacerItem5, 0, 2, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -1237,59 +907,34 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "Voice Language:"))
-        self.radioButton.setText(_translate("MainWindow", "Turkish"))
-        self.radioButton_2.setText(_translate("MainWindow", "English"))
-        self.label_2.setText(_translate("MainWindow", "Voice Gender"))
-        self.radioButton_3.setText(_translate("MainWindow", "Male"))
-        self.radioButton_4.setText(_translate("MainWindow", "Female"))
-        self.label_18.setText(_translate("MainWindow", "Name:"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "All"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "Yusuf"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "Kaan"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "Mehmet"))
-        self.comboBox.setItemText(4, _translate("MainWindow", "Dila"))
-        self.comboBox.setItemText(5, _translate("MainWindow", "Eylül"))
-        self.comboBox.setItemText(6, _translate("MainWindow", "Nursena"))
-        self.comboBox.setItemText(7, _translate("MainWindow", "Eren"))
-        self.comboBox.setItemText(8, _translate("MainWindow", "Barış"))
-        self.comboBox.setItemText(9, _translate("MainWindow", "Emre"))
-        self.comboBox.setItemText(10, _translate("MainWindow", "Emin"))
-        self.label_19.setText(_translate("MainWindow", "Commend:"))
-        self.comboBox_2.setItemText(0, _translate("MainWindow", "All"))
-        self.comboBox_2.setItemText(1, _translate("MainWindow", "Merhaba"))
-        self.comboBox_2.setItemText(2, _translate("MainWindow", "Araba"))
-        self.comboBox_2.setItemText(3, _translate("MainWindow", "Ev"))
-        self.pushButton_12.setText(_translate("MainWindow", "Play"))
-        self.label_36.setText(_translate("MainWindow", "Language"))
-        self.label_37.setText(_translate("MainWindow", "Gender"))
-        self.label_38.setText(_translate("MainWindow", "Name"))
-        self.label_39.setText(_translate("MainWindow", "Voice Command"))
-        self.pushButton_13.setText(_translate("MainWindow", "Play"))
-        self.label_40.setText(_translate("MainWindow", "Language"))
-        self.label_41.setText(_translate("MainWindow", "Gender"))
-        self.label_42.setText(_translate("MainWindow", "Name"))
-        self.label_43.setText(_translate("MainWindow", "Voice Command"))
-        self.pushButton_14.setText(_translate("MainWindow", "Play"))
-        self.label_44.setText(_translate("MainWindow", "Language"))
-        self.label_45.setText(_translate("MainWindow", "Gender"))
-        self.label_46.setText(_translate("MainWindow", "Name"))
-        self.label_47.setText(_translate("MainWindow", "Voice Command"))
-        self.pushButton_15.setText(_translate("MainWindow", "Play"))
-        self.label_48.setText(_translate("MainWindow", "Language"))
-        self.label_49.setText(_translate("MainWindow", "Gender"))
-        self.label_50.setText(_translate("MainWindow", "Name"))
-        self.label_51.setText(_translate("MainWindow", "Voice Command"))
-        self.pushButton_16.setText(_translate("MainWindow", "Play"))
-        self.label_52.setText(_translate("MainWindow", "Language"))
-        self.label_53.setText(_translate("MainWindow", "Gender"))
-        self.label_54.setText(_translate("MainWindow", "Name"))
-        self.label_55.setText(_translate("MainWindow", "Voice Command"))
-        self.pushButton_7.setText(_translate("MainWindow", "Filter Data"))
-        self.pushButton_8.setText(_translate("MainWindow", "Show All Data"))
-        self.pushButton_9.setText(_translate("MainWindow", "Download Data"))
-        self.pushButton_4.setText(_translate("MainWindow", "Clear Data"))
-        self.label_4.setText(_translate("MainWindow", "22"))
-        self.label_5.setText(_translate("MainWindow", "Showed Data:"))
-        self.label_6.setText(_translate("MainWindow", "500"))
-        self.label_7.setText(_translate("MainWindow", "All Data:"))
+        self.labelFilterLanguage.setText(_translate("MainWindow", "Voice Language:"))
+        self.radioButtonFilterLanguageTurkish.setText(_translate("MainWindow", "Turkish"))
+        self.radioButtonFilterLanguageEnglish.setText(_translate("MainWindow", "English"))
+        self.labelFilterGender.setText(_translate("MainWindow", "Voice Gender"))
+        self.radioButtonFilterGenderMale.setText(_translate("MainWindow", "Male"))
+        self.radioButtonFilterGenderFemale.setText(_translate("MainWindow", "Female"))
+        self.labelFilterName.setText(_translate("MainWindow", "Name:"))
+        self.comboBoxFilterName.setItemText(0, _translate("MainWindow", "All"))
+        self.comboBoxFilterName.setItemText(1, _translate("MainWindow", "Yusuf"))
+        self.comboBoxFilterName.setItemText(2, _translate("MainWindow", "Kaan"))
+        self.comboBoxFilterName.setItemText(3, _translate("MainWindow", "Mehmet"))
+        self.comboBoxFilterName.setItemText(4, _translate("MainWindow", "Dila"))
+        self.comboBoxFilterName.setItemText(5, _translate("MainWindow", "Eylül"))
+        self.comboBoxFilterName.setItemText(6, _translate("MainWindow", "Nursena"))
+        self.comboBoxFilterName.setItemText(7, _translate("MainWindow", "Eren"))
+        self.comboBoxFilterName.setItemText(8, _translate("MainWindow", "Barış"))
+        self.comboBoxFilterName.setItemText(9, _translate("MainWindow", "Emre"))
+        self.comboBoxFilterName.setItemText(10, _translate("MainWindow", "Emin"))
+        self.labelFilterCommend.setText(_translate("MainWindow", "Commend:"))
+        self.comboBoxFilterCommend.setItemText(0, _translate("MainWindow", "All"))
+        self.comboBoxFilterCommend.setItemText(1, _translate("MainWindow", "Merhaba"))
+        self.comboBoxFilterCommend.setItemText(2, _translate("MainWindow", "Araba"))
+        self.comboBoxFilterCommend.setItemText(3, _translate("MainWindow", "Ev"))
+        self.pushButtonButtonsFilterData.setText(_translate("MainWindow", "Filter Data"))
+        self.pushButtonButtonsShowAllData.setText(_translate("MainWindow", "Show All Data"))
+        self.pushButtonButtonsDownloadData.setText(_translate("MainWindow", "Download Data"))
+        self.pushButtonButtonsClearData.setText(_translate("MainWindow", "Clear Data"))
+        self.labelShowedDataNumber.setText(_translate("MainWindow", "22"))
+        self.labelShowedData.setText(_translate("MainWindow", "Showed Data:"))
+        self.labelAllDataNumber.setText(_translate("MainWindow", "500"))
+        self.labelAllData.setText(_translate("MainWindow", "All Data:"))
