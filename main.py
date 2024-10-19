@@ -103,40 +103,41 @@ sorguCreTblSpor = (
 )
 curs.execute(sorguCreTblSpor)
 conn.commit()
+#--------------- VERİTABANINDAN VERİ ÇEKME --------------
+def LISTALLDATA():
+    scrollAreaWidgetContents_2 = ui.scrollAreaWidgetContents_2
+    if scrollAreaWidgetContents_2.layout() is None:
+        verticalLayout = QVBoxLayout(scrollAreaWidgetContents_2)
+        scrollAreaWidgetContents_2.setLayout(verticalLayout)
+        print("Yeni layout oluşturuldu.")
+    else:
+        verticalLayout = scrollAreaWidgetContents_2.layout()
+        print("Mevcut layout bulundu.")
 
-#--------------- WIDGET EKLEME ----------------------
-# scrollAreaWidgetContents_2'yi al
-scrollAreaWidgetContents_2 = ui.scrollAreaWidgetContents_2
+    for i in reversed(range(verticalLayout.count())):
+        widget_to_remove = verticalLayout.itemAt(i).widget()
+        if widget_to_remove is not None:
+            widget_to_remove.deleteLater()
 
-# Eğer scrollAreaWidgetContents_2 için bir layout yoksa oluştur
-if scrollAreaWidgetContents_2.layout() is None:
-    verticalLayout = QVBoxLayout(scrollAreaWidgetContents_2)
-    scrollAreaWidgetContents_2.setLayout(verticalLayout)
-    print("Yeni layout oluşturuldu.")
-else:
-    verticalLayout = scrollAreaWidgetContents_2.layout()
-    print("Mevcut layout bulundu.")
+    curs.execute("SELECT * FROM voice")
+    # Verileri kullanarak CustomWidget oluştur
+    for satirVeri in curs:
+        # satirVeri'yi dictionary formatında alıyorsanız, ona göre verileri ayarlayın
+        data = {
+            "Language": satirVeri[1],
+            "Gender": satirVeri[2],
+            "Name": satirVeri[3],
+            "Commend": satirVeri[4],
+            "Progress": 0
+        }
 
-# Mevcut widget'ları temizleme
-for i in reversed(range(verticalLayout.count())):
-    widget_to_remove = verticalLayout.itemAt(i).widget()
-    if widget_to_remove is not None:
-        widget_to_remove.deleteLater()
-
-# Yeni widget'ları ekle
-widget_data = [
-    {"name": "John", "language": "English", "gender": "Male", "commend": "Jump", "progress": 50},
-    {"name": "Alice", "language": "French", "gender": "Female", "commend": "Run", "progress": 30},
-    {"name": "Bob", "language": "German", "gender": "Male", "commend": "Sit", "progress": 70},
-    {"name": "Eve", "language": "Spanish", "gender": "Female", "commend": "Walk", "progress": 80},
-    {"name": "Tom", "language": "Turkish", "gender": "Male", "commend": "Stand", "progress": 60},
-]
-
-for data in widget_data:
-    custom_widget = CustomWidget(data["name"], data["language"], data["gender"], data["commend"], data["progress"])
-    verticalLayout.addWidget(custom_widget)
-    print(f"Widget eklendi: {data['name']}")
-
+        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"],data["Progress"])
+        verticalLayout.addWidget(custom_widget)
+        print(f"Widget eklendi: {data['Name']}")
+    curs.execute("SELECT COUNT(*) FROM voice")
+    print("Sorgu")
+    numberVoice = curs.fetchone()
+    ui.labelShowedDataNumber.setText(str(numberVoice[0]))
 # Uygulamayı başlat
 penAna.show()
 
@@ -156,5 +157,6 @@ def clear_widgets():
 
 # Clear butonunu clicked sinyaline bağla
 ui.pushButtonButtonsClearData.clicked.connect(clear_widgets)
+ui.pushButtonButtonsShowAllData.clicked.connect(LISTALLDATA)
 
 sys.exit(Uygulama.exec_())
