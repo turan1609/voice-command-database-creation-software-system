@@ -246,10 +246,11 @@ def FILTERDATA():
             "Gender": satirVeri[2],
             "Name": satirVeri[3],
             "Commend": satirVeri[4],
+            "Url": satirVeri[5],
             "Progress": 0  # Progress değerini uygun bir kaynaktan almak gerekebilir
         }
 
-        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"])
+        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"], data["Url"])
         verticalLayout.addWidget(custom_widget)
         print(f"Widget eklendi: {data['Name']}")
 
