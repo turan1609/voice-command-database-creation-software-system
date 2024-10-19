@@ -920,17 +920,12 @@ QComboBox:hover{
           </item>
           <item>
            <property name="text">
-            <string>Merhaba</string>
+            <string>test</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Araba</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Ev</string>
+            <string>deneme</string>
            </property>
           </item>
          </widget>
