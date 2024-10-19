@@ -144,79 +144,70 @@ def FILTERDATA():
     # Dil kontrolleri
     english_selected = ui.radioButtonFilterLanguageEnglish.isChecked()
     turkish_selected = ui.radioButtonFilterLanguageTurkish.isChecked()
-    print("OKEY")
+
     # Cinsiyet kontrolleri
     male_selected = ui.radioButtonFilterGenderMale.isChecked()
     female_selected = ui.radioButtonFilterGenderFemale.isChecked()
-    print("OKEY")
+
     # Dil kontrolü
     if not (turkish_selected or english_selected):
         QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir dil seçin.")
         return  # Fonksiyonu sonlandır
-    print("OKEY")
+
     # Cinsiyet kontrolü
     if not (male_selected or female_selected):
         QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir cinsiyet seçin.")
         return  # Fonksiyonu sonlandır
-    print("OKEY")
+
     # Seçilen dillerin listesini oluştur
     languages = []
     if turkish_selected:
         languages.append("tr")
     if english_selected:
         languages.append("en")
-    print("OKEY")
+
     # Seçilen cinsiyetlerin listesini oluştur
     genders = []
     if male_selected:
         genders.append("male")
     if female_selected:
         genders.append("female")
-    print("OKEY")
+
+    # ComboBox'lardan seçilen değerleri al
     name_selected = ui.comboBoxFilterName.currentText()
-    print(name_selected)
     commend_selected = ui.comboBoxFilterCommend.currentText()
-    print(commend_selected)
+
     # Sorguyu oluştur
-    query = "SELECT * FROM voice WHERE (Language IN ({}) AND Gender IN ({})".format(
+    query = "SELECT * FROM voice WHERE Language IN ({}) AND Gender IN ({})".format(
         ', '.join('?' * len(languages)),
         ', '.join('?' * len(genders))
     )
-    print("OKEY")
+    params = languages + genders
+
     # Name koşulunu ekle
-
-
     if name_selected != "All":
-        query += " AND Name=?)"
-        params = languages + genders + [name_selected, commend_selected]
-    else:
-        query += ")"
-        params = languages + genders
+        query += " AND Name = ?"
+        params.append(name_selected)
 
-    print("OKEY")
-    # Commend koşulunu kontrol et
+    # Commend koşulunu ekle
     if commend_selected != "All":
-        query += " AND Commend=?)"
-        params = languages + genders + [name_selected, commend_selected]
-    else:
-        query += ")"
-        params = languages + genders + [name_selected]
+        query += " AND Commend = ?"
+        params.append(commend_selected)
 
     # Filtreleme sorgusu
     curs.execute(query, params)
-    print("OKEY")
+
     # Sonuçları işleme
     results = curs.fetchall()
 
+    # ScrollArea'nın layout'unu al
     scrollAreaWidgetContents_2 = ui.scrollAreaWidgetContents_2
 
     if scrollAreaWidgetContents_2.layout() is None:
         verticalLayout = QVBoxLayout(scrollAreaWidgetContents_2)
         scrollAreaWidgetContents_2.setLayout(verticalLayout)
-        print("Yeni layout oluşturuldu.")
     else:
         verticalLayout = scrollAreaWidgetContents_2.layout()
-        print("Mevcut layout bulundu.")
 
     # Mevcut widget'ları temizle
     for i in reversed(range(verticalLayout.count())):
@@ -224,8 +215,11 @@ def FILTERDATA():
         if widget_to_remove is not None:
             widget_to_remove.deleteLater()
 
+    numberVoice=0
+
     # Sonuçları widget'lara ekle
     for satirVeri in results:
+        numberVoice+=1
         data = {
             "Language": satirVeri[1],
             "Gender": satirVeri[2],
@@ -237,11 +231,10 @@ def FILTERDATA():
         custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"])
         verticalLayout.addWidget(custom_widget)
         print(f"Widget eklendi: {data['Name']}")
-        print("OKEY")
+        
+        ui.labelShowedDataNumber.setText(str(numberVoice))
 
-# Uygulamayı başlat
 penAna.show()
-
 
 # Clear butonuna tıklanınca çalışacak fonksiyon
 def clear_widgets():
