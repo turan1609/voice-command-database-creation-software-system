@@ -91,7 +91,7 @@ global curs
 global conn
 conn = sqlite3.connect('veritabani.db')
 curs = conn.cursor()
-sorguCreTblSpor = (
+queryCreTblVoice = (
     "CREATE TABLE IF NOT EXISTS voice(                 \
                  Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   \
                  Language TEXT NOT NULL,                       \
@@ -101,7 +101,7 @@ sorguCreTblSpor = (
                  Url TEXT NOT NULL UNIQUE,                             \
                  Status BOOLEAN NOT NULL )"
 )
-curs.execute(sorguCreTblSpor)
+curs.execute(queryCreTblVoice)
 conn.commit()
 #--------------- VERİTABANINDAN VERİ ÇEKME --------------
 def LISTALLDATA():
@@ -138,9 +138,103 @@ def LISTALLDATA():
     print("Sorgu")
     numberVoice = curs.fetchone()
     ui.labelShowedDataNumber.setText(str(numberVoice[0]))
-# Uygulamayı başlat
-penAna.show()
 
+
+def FILTERDATA():
+    # Dil kontrolleri
+    english_selected = ui.radioButtonFilterLanguageEnglish.isChecked()
+    turkish_selected = ui.radioButtonFilterLanguageTurkish.isChecked()
+
+    # Cinsiyet kontrolleri
+    male_selected = ui.radioButtonFilterGenderMale.isChecked()
+    female_selected = ui.radioButtonFilterGenderFemale.isChecked()
+
+    # Dil kontrolü
+    if not (turkish_selected or english_selected):
+        QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir dil seçin.")
+        return  # Fonksiyonu sonlandır
+
+    # Cinsiyet kontrolü
+    if not (male_selected or female_selected):
+        QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir cinsiyet seçin.")
+        return  # Fonksiyonu sonlandır
+
+    # Seçilen dillerin listesini oluştur
+    languages = []
+    if turkish_selected:
+        languages.append("tr")
+    if english_selected:
+        languages.append("en")
+
+    # Seçilen cinsiyetlerin listesini oluştur
+    genders = []
+    if male_selected:
+        genders.append("male")
+    if female_selected:
+        genders.append("female")
+
+    # ComboBox'lardan seçilen değerleri al
+    name_selected = ui.comboBoxFilterName.currentText()
+    commend_selected = ui.comboBoxFilterCommend.currentText()
+
+    # Sorguyu oluştur
+    query = "SELECT * FROM voice WHERE Language IN ({}) AND Gender IN ({})".format(
+        ', '.join('?' * len(languages)),
+        ', '.join('?' * len(genders))
+    )
+    params = languages + genders
+
+    # Name koşulunu ekle
+    if name_selected != "All":
+        query += " AND Name = ?"
+        params.append(name_selected)
+
+    # Commend koşulunu ekle
+    if commend_selected != "All":
+        query += " AND Commend = ?"
+        params.append(commend_selected)
+
+    # Filtreleme sorgusu
+    curs.execute(query, params)
+
+    # Sonuçları işleme
+    results = curs.fetchall()
+
+    # ScrollArea'nın layout'unu al
+    scrollAreaWidgetContents_2 = ui.scrollAreaWidgetContents_2
+
+    if scrollAreaWidgetContents_2.layout() is None:
+        verticalLayout = QVBoxLayout(scrollAreaWidgetContents_2)
+        scrollAreaWidgetContents_2.setLayout(verticalLayout)
+    else:
+        verticalLayout = scrollAreaWidgetContents_2.layout()
+
+    # Mevcut widget'ları temizle
+    for i in reversed(range(verticalLayout.count())):
+        widget_to_remove = verticalLayout.itemAt(i).widget()
+        if widget_to_remove is not None:
+            widget_to_remove.deleteLater()
+
+    numberVoice=0
+
+    # Sonuçları widget'lara ekle
+    for satirVeri in results:
+        numberVoice+=1
+        data = {
+            "Language": satirVeri[1],
+            "Gender": satirVeri[2],
+            "Name": satirVeri[3],
+            "Commend": satirVeri[4],
+            "Progress": 0  # Progress değerini uygun bir kaynaktan almak gerekebilir
+        }
+
+        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"])
+        verticalLayout.addWidget(custom_widget)
+        print(f"Widget eklendi: {data['Name']}")
+        
+        ui.labelShowedDataNumber.setText(str(numberVoice))
+
+penAna.show()
 
 # Clear butonuna tıklanınca çalışacak fonksiyon
 def clear_widgets():
@@ -158,5 +252,6 @@ def clear_widgets():
 # Clear butonunu clicked sinyaline bağla
 ui.pushButtonButtonsClearData.clicked.connect(clear_widgets)
 ui.pushButtonButtonsShowAllData.clicked.connect(LISTALLDATA)
+ui.pushButtonButtonsFilterData.clicked.connect(FILTERDATA)
 
 sys.exit(Uygulama.exec_())
