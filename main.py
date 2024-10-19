@@ -231,7 +231,7 @@ def FILTERDATA():
         custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"])
         verticalLayout.addWidget(custom_widget)
         print(f"Widget eklendi: {data['Name']}")
-        
+
         ui.labelShowedDataNumber.setText(str(numberVoice))
 
 penAna.show()
