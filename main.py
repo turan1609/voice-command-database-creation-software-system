@@ -1,5 +1,6 @@
 #-------------------- KÜTÜPHANE --------------------
-import sys, os
+import sys
+import os
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from voiceCommandDatabase import *
@@ -11,7 +12,7 @@ from PyQt5.QtCore import QUrl
 
 #---------------- ÖZEL WIDGET TANIMI ---------------
 class CustomWidget(QtWidgets.QWidget):
-    def __init__(self, name, language, gender, commend, progress, file_name):
+    def __init__(self, name, language, gender, commend, file_name):
         super().__init__()
         layout = QtWidgets.QHBoxLayout(self)
 
@@ -21,6 +22,7 @@ class CustomWidget(QtWidgets.QWidget):
             "border-width: 3px;"
             "border-color: #4d4018;"
         )
+
         # Media Player
         self.player = QMediaPlayer()
         self.player.setVolume(100)
@@ -45,6 +47,9 @@ class CustomWidget(QtWidgets.QWidget):
         voices_folder = os.path.join(os.path.dirname(__file__), 'voices')
         file_path = os.path.join(voices_folder, file_name)
         self.pushButtonCardExamplePlay.clicked.connect(lambda: self.play_sound(file_path))
+
+        self.player.positionChanged.connect(self.update_progress)
+        self.player.stateChanged.connect(self.on_player_state_changed)
 
         # Language Label
         self.labelCardExampleLanguage = QLabel(language)
@@ -88,17 +93,35 @@ class CustomWidget(QtWidgets.QWidget):
             "background-color: black;"
             "border-color: #4d4018;"
         )
-        self.progressBarCardExample.setValue(progress)
+        self.progressBarCardExample.setValue(0)
         layout.addWidget(self.progressBarCardExample)
 
-        # Ses Çalma Fonksiyonu
+    # Ses Çalma Fonksiyonu
+    print("1")
+
     def play_sound(self, file_path):
+        print("1")
         if os.path.exists(file_path):  # Dosyanın mevcut olup olmadığını kontrol et
+            print("2")
             self.player.setMedia(QMediaContent(QUrl.fromLocalFile(file_path)))
+            print("3")
             self.player.play()
+            print("4")
             print(f"Çalınıyor: {file_path}")
+            print("5")
         else:
             print(f"Ses dosyası bulunamadı: {file_path}")
+
+    def update_progress(self, position):
+        # İlerleme çubuğunu güncelle
+        duration = self.player.duration()
+        if duration > 0:
+            self.progressBarCardExample.setValue(int((position / duration) * 100))
+
+    def on_player_state_changed(self, state):
+        if state == QMediaPlayer.StoppedState:
+            self.progressBarCardExample.setValue(0)
+
 
 #---------------- UYGULAMA OLUŞTURMA ---------------
 Uygulama = QApplication(sys.argv)
@@ -123,6 +146,8 @@ queryCreTblVoice = (
 )
 curs.execute(queryCreTblVoice)
 conn.commit()
+
+
 #--------------- VERİTABANINDAN VERİ ÇEKME --------------
 def LISTALLDATA():
     scrollAreaWidgetContents_2 = ui.scrollAreaWidgetContents_2
@@ -142,21 +167,17 @@ def LISTALLDATA():
     curs.execute("SELECT * FROM voice")
     # Verileri kullanarak CustomWidget oluştur
     for satirVeri in curs:
-        # satirVeri'yi dictionary formatında alıyorsanız, ona göre verileri ayarlayın
         data = {
             "Language": satirVeri[1],
             "Gender": satirVeri[2],
             "Name": satirVeri[3],
             "Commend": satirVeri[4],
-            "Url": satirVeri[5],
-            "Progress": 0
+            "Url": satirVeri[5]
         }
-
-        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"],data["Progress"], data["Url"])
+        custom_widget = CustomWidget(data["Name"], data["Language"], data["Gender"], data["Commend"], data["Url"])
         verticalLayout.addWidget(custom_widget)
         print(f"Widget eklendi: {data['Name']}")
     curs.execute("SELECT COUNT(*) FROM voice")
-    print("Sorgu")
     numberVoice = curs.fetchone()
     ui.labelShowedDataNumber.setText(str(numberVoice[0]))
 
@@ -236,29 +257,24 @@ def FILTERDATA():
         if widget_to_remove is not None:
             widget_to_remove.deleteLater()
 
-    numberVoice=0
+    numberVoice = 0
 
     # Sonuçları widget'lara ekle
     for satirVeri in results:
-        numberVoice+=1
+        numberVoice += 1
         data = {
             "Language": satirVeri[1],
             "Gender": satirVeri[2],
             "Name": satirVeri[3],
             "Commend": satirVeri[4],
-            "Url": satirVeri[5],
-            "Progress": 0  # Progress değerini uygun bir kaynaktan almak gerekebilir
+            "Url": satirVeri[5]
         }
-
-        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"], data["Url"])
+        custom_widget = CustomWidget(data["Name"], data["Language"], data["Gender"], data["Commend"], data["Url"])
         verticalLayout.addWidget(custom_widget)
-        print(f"Widget eklendi: {data['Name']}")
 
-        ui.labelShowedDataNumber.setText(str(numberVoice))
+    # Sonuç sayısını göster
+    ui.labelShowedDataNumber.setText(str(numberVoice))
 
-penAna.show()
-
-# Clear butonuna tıklanınca çalışacak fonksiyon
 def clear_widgets():
     layout = ui.scrollAreaWidgetContents_2.layout()
 
@@ -270,11 +286,12 @@ def clear_widgets():
                 widget_to_remove.deleteLater()
         print("Tüm widget'lar silindi.")
 
-
-# Clear butonunu clicked sinyaline bağla
-ui.pushButtonButtonsClearData.clicked.connect(clear_widgets)
+#-------------- UYGULAMA OLAYLARI -------------------
+#-------------- UYGULAMA OLAYLARI -------------------
 ui.pushButtonButtonsShowAllData.clicked.connect(LISTALLDATA)
 ui.pushButtonButtonsFilterData.clicked.connect(FILTERDATA)
+ui.pushButtonButtonsClearData.clicked.connect(clear_widgets)
 
-
+#--------------- UYGULAMAYI ÇALIŞTIRMA --------------
+penAna.show()
 sys.exit(Uygulama.exec_())
