@@ -286,6 +286,7 @@ def clear_widgets():
                 widget_to_remove.deleteLater()
         print("Tüm widget'lar silindi.")
 
+
 #-------------- UYGULAMA OLAYLARI -------------------
 #-------------- UYGULAMA OLAYLARI -------------------
 ui.pushButtonButtonsShowAllData.clicked.connect(LISTALLDATA)
