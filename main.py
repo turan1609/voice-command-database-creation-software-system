@@ -91,7 +91,7 @@ global curs
 global conn
 conn = sqlite3.connect('veritabani.db')
 curs = conn.cursor()
-sorguCreTblSpor = (
+queryCreTblVoice = (
     "CREATE TABLE IF NOT EXISTS voice(                 \
                  Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   \
                  Language TEXT NOT NULL,                       \
@@ -101,7 +101,7 @@ sorguCreTblSpor = (
                  Url TEXT NOT NULL UNIQUE,                             \
                  Status BOOLEAN NOT NULL )"
 )
-curs.execute(sorguCreTblSpor)
+curs.execute(queryCreTblVoice)
 conn.commit()
 #--------------- VERİTABANINDAN VERİ ÇEKME --------------
 def LISTALLDATA():
@@ -144,47 +144,67 @@ def FILTERDATA():
     # Dil kontrolleri
     english_selected = ui.radioButtonFilterLanguageEnglish.isChecked()
     turkish_selected = ui.radioButtonFilterLanguageTurkish.isChecked()
-
+    print("OKEY")
     # Cinsiyet kontrolleri
     male_selected = ui.radioButtonFilterGenderMale.isChecked()
     female_selected = ui.radioButtonFilterGenderFemale.isChecked()
-
+    print("OKEY")
     # Dil kontrolü
     if not (turkish_selected or english_selected):
         QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir dil seçin.")
         return  # Fonksiyonu sonlandır
-
+    print("OKEY")
     # Cinsiyet kontrolü
     if not (male_selected or female_selected):
         QtWidgets.QMessageBox.warning(None, "Uyarı", "Lütfen en az bir cinsiyet seçin.")
         return  # Fonksiyonu sonlandır
-
+    print("OKEY")
     # Seçilen dillerin listesini oluştur
     languages = []
     if turkish_selected:
         languages.append("tr")
     if english_selected:
         languages.append("en")
-
+    print("OKEY")
     # Seçilen cinsiyetlerin listesini oluştur
     genders = []
     if male_selected:
-        genders.append("Male")
+        genders.append("male")
     if female_selected:
-        genders.append("Female")
-
-    name_selected=ui.comboBoxFilterName.currentText()
-    commend_selected=ui.comboBoxFilterCommend.currentText()
+        genders.append("female")
+    print("OKEY")
+    name_selected = ui.comboBoxFilterName.currentText()
+    print(name_selected)
+    commend_selected = ui.comboBoxFilterCommend.currentText()
+    print(commend_selected)
     # Sorguyu oluştur
-    query = "SELECT * FROM spor WHERE Language IN ({}) AND Gender IN ({})".format(
+    query = "SELECT * FROM voice WHERE (Language IN ({}) AND Gender IN ({})".format(
         ', '.join('?' * len(languages)),
         ', '.join('?' * len(genders))
     )
-    params = languages + genders + name_selected + commend_selected
+    print("OKEY")
+    # Name koşulunu ekle
+
+
+    if name_selected != "All":
+        query += " AND Name=?)"
+        params = languages + genders + [name_selected, commend_selected]
+    else:
+        query += ")"
+        params = languages + genders
+
+    print("OKEY")
+    # Commend koşulunu kontrol et
+    if commend_selected != "All":
+        query += " AND Commend=?)"
+        params = languages + genders + [name_selected, commend_selected]
+    else:
+        query += ")"
+        params = languages + genders + [name_selected]
 
     # Filtreleme sorgusu
-    curs.execute(query + " OR Name=? OR Commend=?", params)
-
+    curs.execute(query, params)
+    print("OKEY")
     # Sonuçları işleme
     results = curs.fetchall()
 
@@ -198,26 +218,26 @@ def FILTERDATA():
         verticalLayout = scrollAreaWidgetContents_2.layout()
         print("Mevcut layout bulundu.")
 
+    # Mevcut widget'ları temizle
     for i in reversed(range(verticalLayout.count())):
         widget_to_remove = verticalLayout.itemAt(i).widget()
         if widget_to_remove is not None:
             widget_to_remove.deleteLater()
 
+    # Sonuçları widget'lara ekle
     for satirVeri in results:
-        # satirVeri'yi dictionary formatında alıyorsanız, ona göre verileri ayarlayın
         data = {
             "Language": satirVeri[1],
             "Gender": satirVeri[2],
             "Name": satirVeri[3],
             "Commend": satirVeri[4],
-            "Progress": 0
+            "Progress": 0  # Progress değerini uygun bir kaynaktan almak gerekebilir
         }
 
-        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"],data["Progress"])
+        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"])
         verticalLayout.addWidget(custom_widget)
         print(f"Widget eklendi: {data['Name']}")
-
-
+        print("OKEY")
 
 # Uygulamayı başlat
 penAna.show()
@@ -239,5 +259,6 @@ def clear_widgets():
 # Clear butonunu clicked sinyaline bağla
 ui.pushButtonButtonsClearData.clicked.connect(clear_widgets)
 ui.pushButtonButtonsShowAllData.clicked.connect(LISTALLDATA)
+ui.pushButtonButtonsFilterData.clicked.connect(FILTERDATA)
 
 sys.exit(Uygulama.exec_())
