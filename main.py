@@ -1,6 +1,7 @@
 #-------------------- KÜTÜPHANE --------------------
 import sys
 import os
+import pandas as pd
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from voiceCommandDatabase import *
@@ -8,6 +9,9 @@ from PyQt5 import uic
 import sqlite3
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtCore import QUrl
+
+
+
 
 
 #---------------- ÖZEL WIDGET TANIMI ---------------
@@ -124,6 +128,10 @@ class CustomWidget(QtWidgets.QWidget):
 
 
 #---------------- UYGULAMA OLUŞTURMA ---------------
+
+global last_query
+last_query = None
+
 Uygulama = QApplication(sys.argv)
 penAna = QMainWindow()
 ui = Ui_MainWindow()
@@ -150,6 +158,7 @@ conn.commit()
 
 #--------------- VERİTABANINDAN VERİ ÇEKME --------------
 def LISTALLDATA():
+    global last_query
     scrollAreaWidgetContents_2 = ui.scrollAreaWidgetContents_2
     if scrollAreaWidgetContents_2.layout() is None:
         verticalLayout = QVBoxLayout(scrollAreaWidgetContents_2)
@@ -164,7 +173,13 @@ def LISTALLDATA():
         if widget_to_remove is not None:
             widget_to_remove.deleteLater()
 
-    curs.execute("SELECT * FROM voice")
+    queryAllData = "SELECT * FROM voice"
+    curs.execute(queryAllData)
+
+    # last_query'yi güncelle
+    last_query = (queryAllData, [])
+
+
     # Verileri kullanarak CustomWidget oluştur
     for satirVeri in curs:
         data = {
@@ -183,6 +198,10 @@ def LISTALLDATA():
 
 
 def FILTERDATA():
+
+    global last_query
+
+
     # Dil kontrolleri
     english_selected = ui.radioButtonFilterLanguageEnglish.isChecked()
     turkish_selected = ui.radioButtonFilterLanguageTurkish.isChecked()
@@ -239,6 +258,8 @@ def FILTERDATA():
     # Filtreleme sorgusu
     curs.execute(query, params)
 
+    last_query = (query, params)
+
     # Sonuçları işleme
     results = curs.fetchall()
 
@@ -286,12 +307,43 @@ def clear_widgets():
                 widget_to_remove.deleteLater()
         print("Tüm widget'lar silindi.")
 
+def download_data():
+    global last_query
+    if last_query:
+        query, params = last_query  # Sorgu ve parametreleri al
+        curs.execute(query, params)  # Parametrelerle sorguyu çalıştır
+        data = curs.fetchall()
+        columns = [desc[0] for desc in curs.description]  # Sütun adlarını al
+        df = pd.DataFrame(data, columns=columns)  # DataFrame oluştur
+
+        download_folder = os.path.join(os.path.expanduser("~"), "Downloads")
+        file_path = os.path.join(download_folder, "exported_data.csv")
+
+        try:
+            df.to_csv(file_path, index=False)
+            QMessageBox.information(None, "Success", f"Data downloaded to {file_path}")
+        except Exception as e:
+            QMessageBox.warning(None, "Error", f"Failed to download data: {e}")
+    else:
+        QMessageBox.warning(None, "Error", "No data to download.")
+
+
+
+
+
+
+
 
 #-------------- UYGULAMA OLAYLARI -------------------
 #-------------- UYGULAMA OLAYLARI -------------------
 ui.pushButtonButtonsShowAllData.clicked.connect(LISTALLDATA)
 ui.pushButtonButtonsFilterData.clicked.connect(FILTERDATA)
 ui.pushButtonButtonsClearData.clicked.connect(clear_widgets)
+ui.pushButtonButtonsDownloadData.clicked.connect(download_data)
+
+
+
+
 
 #--------------- UYGULAMAYI ÇALIŞTIRMA --------------
 penAna.show()
