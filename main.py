@@ -316,16 +316,27 @@ def download_data():
         columns = [desc[0] for desc in curs.description]  # Sütun adlarını al
         df = pd.DataFrame(data, columns=columns)  # DataFrame oluştur
 
-        download_folder = os.path.join(os.path.expanduser("~"), "Downloads")
-        file_path = os.path.join(download_folder, "exported_data.csv")
+        # Kullanıcıdan nereye kaydetmek istediğini sormak için QFileDialog kullan
+        options = QFileDialog.Options()
+        file_path, _ = QFileDialog.getSaveFileName(
+            None,
+            "Save CSV File",
+            "data",
+            "CSV Files (*.csv);;All Files (*)",
+            options=options
+        )
 
-        try:
-            df.to_csv(file_path, index=False)
-            QMessageBox.information(None, "Success", f"Data downloaded to {file_path}")
-        except Exception as e:
-            QMessageBox.warning(None, "Error", f"Failed to download data: {e}")
+        if file_path:
+            try:
+                df.to_csv(file_path, index=False)
+                QMessageBox.information(None, "Success", f"Data saved to {file_path}")
+            except Exception as e:
+                QMessageBox.warning(None, "Error", f"Failed to save data: {e}")
+        else:
+            QMessageBox.information(None, "Cancelled", "File save operation was cancelled.")
     else:
         QMessageBox.warning(None, "Error", "No data to download.")
+
 
 
 
