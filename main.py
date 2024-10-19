@@ -1,14 +1,17 @@
 #-------------------- KÜTÜPHANE --------------------
-import sys
+import sys, os
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from voiceCommandDatabase import *
 from PyQt5 import uic
 import sqlite3
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtCore import QUrl
+
 
 #---------------- ÖZEL WIDGET TANIMI ---------------
 class CustomWidget(QtWidgets.QWidget):
-    def __init__(self, name, language, gender, commend, progress):
+    def __init__(self, name, language, gender, commend, progress, file_name):
         super().__init__()
         layout = QtWidgets.QHBoxLayout(self)
 
@@ -18,6 +21,9 @@ class CustomWidget(QtWidgets.QWidget):
             "border-width: 3px;"
             "border-color: #4d4018;"
         )
+        # Media Player
+        self.player = QMediaPlayer()
+        self.player.setVolume(100)
 
         # Play Butonu
         self.pushButtonCardExamplePlay = QPushButton('Play')
@@ -34,6 +40,11 @@ class CustomWidget(QtWidgets.QWidget):
             "}"
         )
         layout.addWidget(self.pushButtonCardExamplePlay)
+
+        # Play Button'a tıklayınca sesi çalma
+        voices_folder = os.path.join(os.path.dirname(__file__), 'voices')
+        file_path = os.path.join(voices_folder, file_name)
+        self.pushButtonCardExamplePlay.clicked.connect(lambda: self.play_sound(file_path))
 
         # Language Label
         self.labelCardExampleLanguage = QLabel(language)
@@ -79,6 +90,15 @@ class CustomWidget(QtWidgets.QWidget):
         )
         self.progressBarCardExample.setValue(progress)
         layout.addWidget(self.progressBarCardExample)
+
+        # Ses Çalma Fonksiyonu
+    def play_sound(self, file_path):
+        if os.path.exists(file_path):  # Dosyanın mevcut olup olmadığını kontrol et
+            self.player.setMedia(QMediaContent(QUrl.fromLocalFile(file_path)))
+            self.player.play()
+            print(f"Çalınıyor: {file_path}")
+        else:
+            print(f"Ses dosyası bulunamadı: {file_path}")
 
 #---------------- UYGULAMA OLUŞTURMA ---------------
 Uygulama = QApplication(sys.argv)
@@ -128,10 +148,11 @@ def LISTALLDATA():
             "Gender": satirVeri[2],
             "Name": satirVeri[3],
             "Commend": satirVeri[4],
+            "Url": satirVeri[5],
             "Progress": 0
         }
 
-        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"],data["Progress"])
+        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"],data["Progress"], data["Url"])
         verticalLayout.addWidget(custom_widget)
         print(f"Widget eklendi: {data['Name']}")
     curs.execute("SELECT COUNT(*) FROM voice")
@@ -225,13 +246,14 @@ def FILTERDATA():
             "Gender": satirVeri[2],
             "Name": satirVeri[3],
             "Commend": satirVeri[4],
+            "Url": satirVeri[5],
             "Progress": 0  # Progress değerini uygun bir kaynaktan almak gerekebilir
         }
 
-        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"])
+        custom_widget = CustomWidget(data["Language"], data["Gender"], data["Name"], data["Commend"], data["Progress"], data["Url"])
         verticalLayout.addWidget(custom_widget)
         print(f"Widget eklendi: {data['Name']}")
-        
+
         ui.labelShowedDataNumber.setText(str(numberVoice))
 
 penAna.show()
@@ -253,5 +275,6 @@ def clear_widgets():
 ui.pushButtonButtonsClearData.clicked.connect(clear_widgets)
 ui.pushButtonButtonsShowAllData.clicked.connect(LISTALLDATA)
 ui.pushButtonButtonsFilterData.clicked.connect(FILTERDATA)
+
 
 sys.exit(Uygulama.exec_())
